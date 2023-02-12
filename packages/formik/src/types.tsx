@@ -145,7 +145,13 @@ export interface FormikHandlers {
       : (e: string | React.ChangeEvent<any>) => void;
   };
 
-  getFieldProps: <Value = any>(props: any) => FieldInputProps<Value>;
+  getFieldProps: <Value = any>(props: {
+    name: string,
+    type: 'radio' | 'checkbox' | 'select',
+    value: any,
+    as: any,
+    multiple: boolean
+  } | string) => FieldInputProps<Value>;
   getFieldMeta: <Value>(name: string) => FieldMetaProps<Value>;
   getFieldHelpers: <Value = any>(name: string) => FieldHelperProps<Value>;
 }

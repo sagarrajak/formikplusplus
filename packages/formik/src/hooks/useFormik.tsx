@@ -1,5 +1,5 @@
 import deepmerge from 'deepmerge';
-import { isFunction, isEqual, isString, isObject } from 'lodash';
+import { isFunction, isEqual, isString } from 'lodash';
 import React from 'react';
 import { FormikMessage, formikReducer } from '../Formik';
 import {
@@ -796,15 +796,9 @@ export function useFormik<Values extends FormikValues = FormikValues>({
   );
 
   const getFieldProps = React.useCallback(
-    (nameOrOptions: string | {
-      name: string,
-      type: 'radio' | 'checkbox' | 'select',
-      value: any,
-      as: any,
-      multiple: boolean
-    }): FieldInputProps<any> => {
-      const isAnObject = isObject(nameOrOptions);
-      const name = isAnObject ? String(nameOrOptions.name) : nameOrOptions;
+    (nameOrOptions): FieldInputProps<any> => {
+      const isAnString = typeof nameOrOptions === 'string';
+      const name = isAnString ?  nameOrOptions : String(nameOrOptions.name);
       const valueState = getIn(state.values, name);
 
       const field: FieldInputProps<any> = {
@@ -813,7 +807,7 @@ export function useFormik<Values extends FormikValues = FormikValues>({
         onChange: handleChange,
         onBlur: handleBlur,
       };
-      if (isAnObject) {
+      if (!isAnString) {
         const {
           type,
           value: valueProp, // value is special for checkboxes
