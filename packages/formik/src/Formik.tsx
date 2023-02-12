@@ -1,8 +1,8 @@
 import * as React from 'react';
 import isEqual from 'react-fast-compare';
 import invariant from 'tiny-warning';
-import { useFormik } from '../dist';
 import { FormikProvider } from './contexts/FormikContext';
+import { useFormik } from './hooks';
 import {
   FormikConfig,
   FormikErrors,

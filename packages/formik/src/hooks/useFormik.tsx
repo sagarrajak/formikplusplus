@@ -796,9 +796,15 @@ export function useFormik<Values extends FormikValues = FormikValues>({
   );
 
   const getFieldProps = React.useCallback(
-    (nameOrOptions): FieldInputProps<any> => {
+    (nameOrOptions: string | {
+      name: string,
+      type: 'radio' | 'checkbox' | 'select',
+      value: any,
+      as: any,
+      multiple: boolean
+    }): FieldInputProps<any> => {
       const isAnObject = isObject(nameOrOptions);
-      const name = isAnObject ? nameOrOptions.name : nameOrOptions;
+      const name = isAnObject ? String(nameOrOptions.name) : nameOrOptions;
       const valueState = getIn(state.values, name);
 
       const field: FieldInputProps<any> = {
