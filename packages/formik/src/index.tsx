@@ -9,3 +9,6 @@ export * from './hoc/connect';
 export * from './ErrorMessage';
 export * from './contexts/FormikContext';
 export * from './FastField';
+export * from './contexts'
+export * from './hoc'
+export * from './hooks'
