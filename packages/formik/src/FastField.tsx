@@ -10,7 +10,7 @@ import {
 import invariant from 'tiny-warning';
 import { getIn, isEmptyChildren, isFunction } from './utils';
 import { FieldConfig } from './Field';
-import { connect } from './connect';
+import { connect } from './hoc/connect';
 
 type $FixMe = any;
 
