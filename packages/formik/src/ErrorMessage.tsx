@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FormikContextType } from './types';
 import { getIn, isFunction } from './utils';
-import { connect } from './connect';
+import { connect } from './hoc/connect';
 
 export interface ErrorMessageProps {
   name: string;

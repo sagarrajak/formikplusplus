@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useFormikContext } from './FormikContext';
+import { useFormikContext } from './contexts/FormikContext';
 
 export type FormikFormProps = Pick<
   React.FormHTMLAttributes<HTMLFormElement>,
